@@ -3,15 +3,15 @@ import { createFragmentContainer, graphql } from 'react-relay'
 
 const BlogPostPreview = props => {
   return (
-    <div key={props.post.id}>{props.post.title}</div>
+    <React.Fragment>
+      <h1>{props.blogpost.title}</h1>
+    </React.Fragment>
   )
 }
 
-export default createFragmentContainer(BlogPostPreview, {
-  post: graphql`
-        fragment BlogPostPreview_post on BlogPost {
-            id
-            title
-        }
-    `
-})
+export default createFragmentContainer(BlogPostPreview, graphql`
+  fragment BlogPostPreview_blogpost on BlogPost {
+    id
+    title
+  }
+`)

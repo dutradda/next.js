@@ -1,0 +1,13 @@
+# source: https://api.graph.cool/relay/v1/next-js-with-relay-modern-example
+# timestamp: Sun Jun 17 2018 11:24:37 GMT-0300 (-03)
+
+type BlogPost @model{
+  id: ID!@isUnique
+  title: String!@isUnique
+  user: User @relation(name: "UserBlogposts")
+}
+
+type User @model{
+  id: ID!@isUnique
+  blogPosts: [BlogPost!]! @relation(name: "UserBlogposts")
+}
